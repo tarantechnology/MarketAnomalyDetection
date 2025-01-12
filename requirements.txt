@@ -1,0 +1,6 @@
+scikit-learn
+imbalanced-learn
+pandas
+numpy
+yfinance
+matplotlib
