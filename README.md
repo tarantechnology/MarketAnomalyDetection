@@ -53,7 +53,7 @@ This repository contains all the necessary files and scripts for running, adapti
 ---
 
 ## Requirements
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 ---
 
