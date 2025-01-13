@@ -1,6 +1,11 @@
-scikit-learn
-imbalanced-learn
 pandas
 numpy
-yfinance
 matplotlib
+seaborn
+scikit-learn
+xgboost
+lightgbm
+imbalanced-learn
+tqdm
+joblib
+streamlit
