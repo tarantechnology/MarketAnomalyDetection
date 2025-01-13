@@ -47,10 +47,10 @@ X_new = combined_df_new.drop(columns=['Y'])
 y_new = combined_df_new['Y']
 
 # saved models
-scaler = joblib.load("scaler.pkl")
-pca = joblib.load("pca.pkl")
-rfe = joblib.load("rfe.pkl")
-saved_feature_names = np.load("feature_names.npy", allow_pickle=True)
+scaler = joblib.load("pkl_files/scaler.pkl")
+pca = joblib.load("pkl_files/pca.pkl")
+rfe = joblib.load("pkl_files/rfe.pkl")
+saved_feature_names = np.load("pkl_files/feature_names.npy", allow_pickle=True)
 
 X_new = X_new.reindex(columns=saved_feature_names, fill_value=0)
 X_new_scaled = scaler.transform(X_new)
@@ -65,7 +65,7 @@ balanced_df = pd.DataFrame(X_new_balanced, index=balanced_indices, columns=[f"PC
 balanced_df["Y"] = y_new_balanced.reset_index(drop=True)
 
 
-xgb_model = joblib.load("xgboost_model.pkl")
+xgb_model = joblib.load("pkl_files/xgboost_model.pkl")
 print("XGBoost model loaded.")
 
 

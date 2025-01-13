@@ -4,11 +4,11 @@ import numpy as np
 import joblib
 from sklearn.metrics import roc_curve
 
-xgb_model = joblib.load("xgboost_model.pkl")
-scaler = joblib.load("scaler.pkl")
-pca = joblib.load("pca.pkl")
-rfe = joblib.load("rfe.pkl")
-saved_feature_names = np.load("feature_names.npy", allow_pickle=True)
+xgb_model = joblib.load("pkl_files/xgboost_model.pkl")
+scaler = joblib.load("pkl_files/scaler.pkl")
+pca = joblib.load("pkl_files/pca.pkl")
+rfe = joblib.load("pkl_files/rfe.pkl")
+saved_feature_names = np.load("pkl_files/feature_names.npy", allow_pickle=True)
 
 def investment_strategy(predicted, vix, usgg3m, gold_threshold=1500):
     if predicted == 1:  
@@ -49,7 +49,7 @@ try:
 
     prediction_proba = xgb_model.predict_proba(input_selected)[:, 1][0]
 
-    fpr, tpr, thresholds = joblib.load("xgboost_roc_data.pkl")
+    fpr, tpr, thresholds = joblib.load("pkl_files/xgboost_roc_data.pkl")
     optimal_idx = np.argmax(tpr - fpr)
     optimal_threshold = thresholds[optimal_idx]
     print(f"Optimal Threshold: {optimal_threshold}")

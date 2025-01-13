@@ -17,7 +17,7 @@ from tqdm import tqdm
 import joblib
 
 
-df = pd.read_csv("FinancialMarketData.csv")
+df = pd.read_csv("FinancialMarketData.csv") 
 df['Data'] = pd.to_datetime(df['Data'], format='%m/%d/%Y')
 print(df.head())
 
@@ -59,14 +59,8 @@ df_selected = df[selected_features]
 #feature engineering
 engineered_features = {}
 
-#roc
-for col in df_selected:
-    if col != 'Y':
-        engineered_features[f"{col}_ROC"] = df_selected[col].pct_change().fillna(0)
-
-
 #window stats
-window = 50 #30 days
+window = 50 #50 days
 for col in df_selected.columns:
     if col != 'Y':
         engineered_features[f"{col}_ROC"] = df_selected[col].pct_change().fillna(0)
