@@ -3,6 +3,14 @@ import pandas as pd
 import numpy as np
 import joblib
 from sklearn.metrics import roc_curve
+import logging
+
+# Configure logging
+logging.basicConfig(
+    filename='app.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
 
 xgb_model = joblib.load("pkl_files/xgboost_model.pkl")
 scaler = joblib.load("pkl_files/scaler.pkl")
@@ -97,4 +105,5 @@ try:
     st.line_chart(portfolio_growth)
 
 except Exception as e:
-    st.error(f"An error occurred: {e}")
+    logging.error(f"Error in prediction: {str(e)}", exc_info=True)
+    st.error("An error occurred while processing your request. Please check the input values.")
